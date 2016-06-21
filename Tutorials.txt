@@ -1,0 +1,4 @@
+https://docs.python.org/3/tutorial/inputoutput.html
+https://docs.python.org/3/library/functions.html#open
+https://docs.python.org/2/tutorial/errors.html
+http://stackoverflow.com/questions/3167494/how-often-does-python-flush-to-a-file
