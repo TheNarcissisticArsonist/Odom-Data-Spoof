@@ -12,8 +12,9 @@ class WebSocketServer(wspy.Connection):
 	# Run upon opening the connection
 	def onopen(self):
 		print 'Connection opened at %s:%d' % self.sock.getpeername()
-		global connectionOpened, dataFile
+		global connectionOpened, dataFile, nextMessageToSend
 		connectionOpened = True
+		nextMessageToSend = 0
 	# Run upon receiving a message
 	def onmessage(self, message):
 		print 'Received message "%s"' % message.payload
@@ -22,7 +23,7 @@ class WebSocketServer(wspy.Connection):
 		messageDetails = getMessage(nextMessageToSend)
 		nextMessageToSend += 1
 		stringToSend = messageDetails[0] + "\n\n" + messageDetails[1]
-		if message.payload == "ready": # If the webpage is ready, give it data
+		if message.payload == "ready" and messageDetails[0] != "": # If the webpage is ready, give it data
 			self.send(wspy.TextMessage(unicode(stringToSend, "utf-8")))
 	# Run upon closing the connection
 	def onclose(self, code, reason):
