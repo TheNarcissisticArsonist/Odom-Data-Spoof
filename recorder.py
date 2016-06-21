@@ -39,7 +39,8 @@ dataFile = open("Data.txt", "w")
 try:
 	while True:
 		if (not odomMessageRecorded) and (not scanMessageRecorded):
-			dataFile.write(lastOdomMessage+"\n|\n"+lastScanMessage+"\n\n")
+			messageBeingWritten = lastOdomMessage+"\n\n"+lastScanMessage+"\n|\n"
+			dataFile.write(messageBeingWritten)
 			dataFile.flush()
 			odomMessageRecorded = True
 			scanMessageRecorded = True

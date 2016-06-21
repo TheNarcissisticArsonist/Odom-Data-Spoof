@@ -2,3 +2,5 @@ https://docs.python.org/3/tutorial/inputoutput.html
 https://docs.python.org/3/library/functions.html#open
 https://docs.python.org/2/tutorial/errors.html
 http://stackoverflow.com/questions/3167494/how-often-does-python-flush-to-a-file
+https://docs.python.org/3/library/stdtypes.html#typesseq-range
+http://stackoverflow.com/questions/10645959/how-do-i-remove-the-last-n-characters-from-a-string
