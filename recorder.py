@@ -18,7 +18,7 @@ numDataPoints = 0
 def odomCallback(data):
 	global lastOdomMessage, odomMessageRecorded
 	lastOdomMessage = data.__str__()
-	odomMessageRecorded = False
+	odomMessageRecorded = False # This is a new message, so it hasn't been recorded yet
 def odomListener():
 	rospy.init_node('listener', anonymous=True)
 	rospy.Subscriber("/odom", Odometry, odomCallback)
@@ -34,11 +34,11 @@ def laserListener():
 odomListener()
 laserListener()
 
-dataFile = open("Data.txt", "w")
+dataFile = open("Data.txt", "w") # Open the text file in write mode. This will erase the last data set
 
 try:
 	while True:
-		if (not odomMessageRecorded) and (not scanMessageRecorded):
+		if (not odomMessageRecorded) and (not scanMessageRecorded): # If both the odom and scan haven't been recorded, record them
 			messageBeingWritten = lastOdomMessage+"\n\n"+lastScanMessage+"\n|\n"
 			dataFile.write(messageBeingWritten)
 			dataFile.flush()
